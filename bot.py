@@ -9,8 +9,7 @@ modules = [
 
 @bot.event
 async def on_ready():
-    print(f"{bot.config['name']} {bot.config['version']}")
-
+    print("Bot is online, and is usable.")
 
 def main():
 
@@ -19,6 +18,7 @@ def main():
 
     for module in modules:
         bot.load_extension(f'Modules.{module}')
+        print(f"[extensions] loaded {module}")
 
     bot.run(bot.config["app"]["token"])
 
