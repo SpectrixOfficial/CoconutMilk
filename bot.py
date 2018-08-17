@@ -1,15 +1,13 @@
 from discord.ext import commands
 import discord
 import json
+import logging
 
 bot = commands.Bot(command_prefix="cm.")
 modules = [
-
+    "Owner"
 ]
-
-@bot.event
-async def on_ready():
-    print("Bot is online, and is usable.")
+logging.basicConfig(level=logging.INFO)
 
 def main():
 
