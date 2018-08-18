@@ -25,7 +25,7 @@ class Owner:
 
     @commands.command(hidden=True, name='load')
     async def _load(self, ctx, extension):
-        self.bot.load_extension(extension)
+        self.bot.load_extension(f'Modules.{extension}')
         emb = discord.Embed(color=discord.Colour.from_rgb(135, 0, 117)).set_footer(text=f"🔨 Loaded {extension}")
         await ctx.send(emb)
 

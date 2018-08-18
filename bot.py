@@ -9,6 +9,13 @@ modules = [
 ]
 logging.basicConfig(level=logging.INFO)
 
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, discord.ext.commands.CommandNotFound):
+        pass
+    else:
+        await ctx.send("")
+
 def main():
 
     with open("config.json") as f:
