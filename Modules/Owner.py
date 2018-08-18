@@ -1,4 +1,5 @@
 from discord.ext import commands
+import discord
 import io
 import textwrap
 import traceback
@@ -21,6 +22,25 @@ class Owner:
             return '\n'.join(content.split('\n')[1:-1])
 
         return content.strip('` \n')
+
+    @commands.command(hidden=True, name='load')
+    async def _load(self, ctx, extension):
+        self.bot.load_extension(extension)
+        emb = discord.Embed(color=discord.Colour.from_rgb(135, 0, 117)).set_footer(text=f"🔨 Loaded {extension}")
+        await ctx.send(emb)
+
+    @commands.command(hidden=True, name='unload')
+    async def _unload(self, ctx, extension):
+        self.bot.load_extension(extension)
+        emb = discord.Embed(color=discord.Colour.from_rgb(135, 0, 117)).set_footer(text=f"🔨 Unloaded {extension}")
+        await ctx.send(emb)
+
+    @commands.command(hidden=True, name='reload')
+    async def _reload(self, ctx, extension):
+        self.bot.unload_extension(extension)
+        self.bot.load_extension(extension)
+        emb = discord.Embed(color=discord.Colour.from_rgb(135, 0, 117)).set_footer(text=f"🔨 Reloaded {extension}")
+        await ctx.send(emb)
 
     @commands.command(hidden=True, name='eval')
     async def _eval(self, ctx, *, code: str):
